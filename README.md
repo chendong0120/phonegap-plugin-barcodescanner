@@ -1,6 +1,12 @@
 # PhoneGap Plugin BarcodeScanner
 ================================
 
+##引用
+
+    https://github.com/chendong0120/phonegap-plugin-barcodescanner
+    
+    
+
 [![Build Status](https://travis-ci.org/phonegap/phonegap-plugin-barcodescanner.svg)](https://travis-ci.org/phonegap/phonegap-plugin-barcodescanner)
 
 Cross-platform BarcodeScanner for Cordova / PhoneGap.
