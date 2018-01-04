@@ -246,3 +246,27 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+
+Android buf fix
+
+    
+  issue[link](https://stackoverflow.com/questions/43140059/manifest-merger-failed-suggestion-add-toolsreplace-androidvalue-to-meta)
+    
+    Manifest merger failed : Attribute meta-data#android.support.VERSION@value value=(25.3.1) from [com.android.support:recyclerview-v7:25.3.1] AndroidManifest.xml:24:9-31 is also present at [com.android.support:appcompat-v7:26.0.0-alpha1] AndroidManifest.xml:27:9-38 value=(26.0.0-alpha1). Suggestion: add 'tools:replace="android:value"' to element at AndroidManifest.xml:22:5-24:34 to override.
+    
+    
+
+
+    configurations.all {
+    
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion '25.3.0'//默认使用的版本
+                }
+            }
+        }
+    }
